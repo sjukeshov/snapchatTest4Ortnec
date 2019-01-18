@@ -21,10 +21,10 @@ public class SnapchatUI {
     private static final By TEXTBOX_USERNAME_OR_EMAIL = By.id("com.snapchat.android:id/username_or_email_field");
     private static final By TEXTBOX_PASSWORD = By.id("com.snapchat.android:id/password_field");
     private static final By BUTTON_NEXT = By.id("com.snapchat.android:id/button_text");
-    private static final By buttonFriends = By.id("com.snapchat.android:id/hova_nav_feed_label");
-    private static final By listLabelsOfFriends = By.id("com.snapchat.android:id/title");
-    private static final By textboxMessage = By.id("com.snapchat.android:id/chat_input_text_field");
-    private static final By listMessages = By.id("com.snapchat.android:id/chat_message_user_text");
+    private static final By BUTTON_FRIENDS = By.id("com.snapchat.android:id/hova_nav_feed_label");
+    private static final By LIST_LABELS_OF_FRIENDS = By.id("com.snapchat.android:id/title");
+    private static final By TEXTBOX_MESSAGE = By.id("com.snapchat.android:id/chat_input_text_field");
+    private static final By LIST_MESSAGES = By.id("com.snapchat.android:id/chat_message_user_text");
 
     private final Logger logger = LoggerFactory.getLogger(SnapchatUI.class);
     private final AndroidDriver<MobileElement> driver;
@@ -52,12 +52,12 @@ public class SnapchatUI {
 
     public void sendMessage(String messageToSend) {
         logger.info("Sending message {}", messageToSend);
-        driver.findElement(SnapchatUI.textboxMessage).setValue(messageToSend);
+        driver.findElement(SnapchatUI.TEXTBOX_MESSAGE).setValue(messageToSend);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public String getLastSentMessage() {
-        List<MobileElement> messagesList = driver.findElements(SnapchatUI.listMessages);
+        List<MobileElement> messagesList = driver.findElements(SnapchatUI.LIST_MESSAGES);
         logger.info("Got {} messages", messagesList.size());
         return messagesList.get(messagesList.size() - 1).getText();
     }
@@ -74,9 +74,9 @@ public class SnapchatUI {
 
     public void clickOnFriendToChat(String friendsName) {
         logger.info("Starting chat with friend {}", friendsName);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(SnapchatUI.buttonFriends)));
-        driver.findElement(SnapchatUI.buttonFriends).click();
-        List<MobileElement> friendsList = driver.findElements(SnapchatUI.listLabelsOfFriends);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(SnapchatUI.BUTTON_FRIENDS)));
+        driver.findElement(SnapchatUI.BUTTON_FRIENDS).click();
+        List<MobileElement> friendsList = driver.findElements(SnapchatUI.LIST_LABELS_OF_FRIENDS);
         for (WebElement friend : friendsList) {
             if (friend.getText().equals(friendsName)) {
                 friend.click();

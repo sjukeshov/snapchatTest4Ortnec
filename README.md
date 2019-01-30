@@ -13,5 +13,5 @@ Running logs for my run can be found in [Google Drive](https://drive.google.com/
 
 Captured video for test be found in [other Google Drive link](https://drive.google.com/file/d/19Geyw8qpb72TbEm5_xHtgC-uKcJU_jrk/view?usp=sharing)
 
-### You can send me your questions to jukeshov@googlemail.com
+### You can send me your questions to my email
 ### Thank you!
